@@ -72,6 +72,7 @@ const search_error = function (msg, icon = "far fa-sad-tear", color = "#777") {
   <p style=color:${color}>${msg}</p>
   </div>`;
 };
+
 const append_text = function (handler, placeholder, show_num) {
   handler.addEventListener("keyup", (e) => {
     const input_val = e.target.value;

@@ -318,7 +318,7 @@ app.on("ready", () => {
         );
 
         pharmacyWindow.webContents.on("did-finish-load", async () => {
-          ipcMain.webContents.on("loaggedUserDetails", decoded);
+          ipcMain.webContents.send("loaggedUserDetails", decoded);
         });
 
         break;
