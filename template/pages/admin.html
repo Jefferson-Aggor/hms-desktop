@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../admin.css" />
+    <link rel="stylesheet" href="../register.css" />
+    <link rel="stylesheet" href="../all.css" />
+    <style>
+      select{
+        padding: 1rem 1.5rem;
+        border-radius: 0.5rem;
+      }
+    </style>
+    <title>Hospital Management System | ADMIN</title>
+  </head>
+  <body>
+    <div class="loader" id="loader">
+      <h1>Loading...</h1>
+    </div>
+
+    <section class="flex-layout">
+      <div class="flex-layout-menu menu">
+        <a href="" class="menu-item" 
+          ><i class="fas fa-spinner" id="overview-icon"></i
+        ></a>
+
+        <a href="" class="menu-item" 
+          ><i class="fas fa-user-edit" id="register-icon"></i
+        ></a>
+
+        <a href="" class="menu-item" 
+          ><i class="fas fa-user-md" id="workers-icon"></i
+        ></a>
+
+        <a href="" class="menu-item" 
+          ><i class="fas fa-users" id="patients-icon"></i
+        ></a>
+
+        <a href="" class="menu-item" 
+          ><i class="fas fa-sign-out-alt" id="logout-icon"></i
+        ></a>
+      </div>
+      <div class="flex-layout-content">
+        <div class="navbar">
+          <div class="navbar-logo"><h2>HMS</h2></div>
+          <div class="navbar-links">
+            Welcome
+            <span
+              class="light-text"
+              id="username"
+              style="text-transform: capitalize"
+            ></span>
+          </div>
+        </div>
+        <div class="main-body">
+          <!-- overview -->
+          <div id="overview">
+            <div class="grid-3">
+              <div class="card overview">
+                <i class="fas fa-users"></i>
+                <p class="num" id="num-patients"></p>
+                <p class="title">Patients</p>
+              </div>
+              <div class="card overview">
+                <i class="fas fa-user-md"></i>
+                <p class="num" id="num-workers"></p>
+                <p class="title">Workers</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- register worker -->
+          <div id="register-worker">
+            <div class="alert"></div>
+            <form action="" class="form" id="register_form">
+              <!-- names -->
+              <div class="separator">
+                <p class="heading">Basic Info</p>
+                <div class="divider"></div>
+              </div>
+              <div class="grid-2">
+                <input
+                  type="text"
+                  name="firstname"
+                  class="register-form-input"
+                  id="firstname"
+                  placeholder="Firstname"
+                />
+
+                <input
+                  type="text"
+                  name="lastname"
+                  class="register-form-input"
+                  id="lastname"
+                  placeholder="Lastname"
+                />
+              </div>
+             
+              <div class="grid-2">
+                <input
+                  type="tel"
+                  name="contact"
+                  placeholder="Contact"
+                  class="register-form-input"
+                  id="contact"
+                />
+
+                <input
+                  type="text"
+                  name="area_of_residence"
+                  placeholder="Location"
+                  class="register-form-input"
+                  id="location"
+                />
+              </div>
+              <p>Date Of Birth</p>
+              <input
+                type="date"
+                name="date_of_birth"
+                class="register-form-input"
+                id="dob"
+              />   
+
+             <div class="separator">
+               <p class="heading">Authentication Details</p>
+               <div class="divider"></div>
+             </div>
+             <!-- email -->
+             <input
+             type="email"
+             name="email"
+             class="register-form-input"
+             id="email"
+             placeholder="email"
+           />
+             <div class="grid-2">
+               <input
+                 type="password"
+                 name="password"
+                 class="register-form-input"
+                 id="password"
+                 placeholder="Password"
+               />
+
+               <div>
+                <input
+                type="password"
+                name="password2"
+                class="register-form-input"
+                id="password2"
+                placeholder="confirm password"
+              />
+              
+               </div>
+               
+             </div>
+             <div class="alert-text"></div>
+
+              <div class="separator">
+                <p class="heading">Work Info</p>
+                <div class="divider"></div>
+              </div>
+                <div class="grid-2">
+                  <select name="role" id="role" class="register-form-input">
+                    <option value="" selected disabled>Select A Role</option>
+                    <option value="cleaner">Cleaner</option>
+                    <option value="cashier">Cashier</option>
+                    <option value="doctor">Doctor</option>
+                    <option value="nurse">Nurse</option>
+                    <option value="receptionist">Receptionist</option>
+                    <option value="lab technician">Lab Technician</option>
+                    <option value="security">Security</option>
+                    <option value="pharmacist">Pharmacist</option>
+                  </select>
+                </div>
+                
+                <div class="separator">
+                  <p class="heading">Personal Info</p>
+
+                  <div class="divider" style="margin-bottom: 2rem;"></div>
+
+                  <input
+                 type="tel"
+                 name="emergency_contact"
+                 class="register-form-input"
+                 id="emergencyContact"
+                 placeholder="Emergency Contact"
+               />
+                  <select name="marital_status" id="marital_status" class="register-form-input">
+                    <option value="" selected disabled>Married?</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                  </select>
+                </div>
+                <input type="submit" value="Register Worker" class="btn ">
+             
+            </form>
+          </div>
+
+
+          <!-- get all workers -->
+          <div id="get-workers-details">
+            <h1 class="title">Get Workers Details</h1>
+            <select name="" id="filter">
+              <option value="" selected disabled>Filter By Role:</option>
+                    <option value="cleaner">Cleaner</option>
+                    <option value="cashier">Cashier</option>
+                    <option value="doctor">Doctor</option>
+
+                    <option value="nurse">Nurse</option>
+                    <option value="receptionist">Receptionist</option>
+                    <option value="lab technician">Lab Technician</option>
+                    <option value="security">Security</option>
+                    <option value="pharmacist">Pharmacist</option>
+            </select>
+
+           <div id="output">
+            
+           </div>
+
+          </div>
+
+          <!-- get all patients -->
+          <div id="get-patients-details">
+            <h1 class="title">Get Patients Details</h1>
+            <div id="patient-output"></div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="../js/admin.js"></script>
+  </body>
+</html>

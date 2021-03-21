@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="../style.css" />
+    <title>Authentication</title>
+  </head>
+  <body>
+    <div class="loader" id="loader">
+      <h1>Loading...</h1>
+    </div>
+    <div class="auth" id="auth">
+      <div class="auth-content">
+        <h2 class="welcome_text" id="welcome_text">
+          Hey! Login in, lets start working..
+        </h2>
+        <form action="" method="POST" class="form" id="form">
+          <div class="form-body">
+            <input
+              type="email"
+              class="form-input block"
+              id="user_email"
+              name="email"
+              placeholder="email"
+              required
+            />
+          </div>
+          <div class="form-body">
+            <input
+              type="password"
+              class="form-input block"
+              id="user_password"
+              name="password"
+              placeholder="password"
+              required
+            />
+          </div>
+
+          <div class="form-body">
+            <input type="submit" class="btn block" value="Login" />
+          </div>
+        </form>
+        <div class="cta">
+          <a href="" class="auth-link">Forgot Password?</a>
+          <h3 class="info">
+            Don't have an account?
+            <span style="border-bottom: 2px solid #00afb9; padding-bottom: 3px"
+              >Contact Admin</span
+            >
+          </h3>
+        </div>
+      </div>
+      <div class="auth-bg"></div>
+    </div>
+    <script src="../js/auth.js"></script>
+  </body>
+</html>

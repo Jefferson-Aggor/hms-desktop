@@ -1,0 +1,18 @@
+{
+  "name": "hospital-management-sys-desktop",
+  "version": "1.0.0",
+  "description": "a hospital management system desktop app ",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Jefferson Aggor",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "jwt-decode": "^3.1.2"
+  },
+  "devDependencies": {
+    "electron": "^11.2.2"
+  }
+}

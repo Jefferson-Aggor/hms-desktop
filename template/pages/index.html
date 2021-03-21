@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../register.css" />
+    <link rel="stylesheet" href="../all.css" />
+    <title>Hospital Management System</title>
+  </head>
+  <body>
+    <div class="loader" id="loader">
+      <h1>Loading...</h1>
+    </div>
+
+    <section class="flex-layout">
+      <div class="flex-layout-menu menu">
+        <a href="" class="menu-item" id="search-icon"
+          ><i class="fas fa-search"></i
+        ></a>
+        <a href="" class="menu-item" id="register-icon"
+          ><i class="fas fa-user-edit"></i
+        ></a>
+        <a href="" class="menu-item"><i class="fas fa-globe"></i></a>
+      </div>
+      <div class="flex-layout-content">
+        <div class="navbar">
+          <div class="navbar-logo"><h2>HMS</h2></div>
+          <div class="navbar-links">
+            Welcome
+            <span
+              class="light-text"
+              id="username"
+              style="text-transform: capitalize"
+            ></span>
+          </div>
+        </div>
+        <div class="main-body" id="search-patient">
+          <!-- Search Form -->
+          <div class="alerts" id="alerts"></div>
+          <form action="" class="form" id="search_form">
+            <div class="form-body">
+              <input
+                type="text"
+                class="form-input block"
+                id="search"
+                name="person"
+                placeholder="Search Patient (First & Last name)"
+              />
+              <button type="submit" class="btn">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+          </form>
+          <!-- Search Output -->
+          <div class="search-output grid-3" id="search_output"></div>
+        </div>
+
+        <!-- register patient -->
+        <div class="main-body register" id="register-patient">
+          <div class="alerts" id="alerts"></div>
+          <div class="register">
+            <form action="" id="register_form">
+              <!-- basic info -->
+              <div class="separator">
+                <p class="heading">Basic Info</p>
+                <div class="divider"></div>
+              </div>
+              <div class="grid-2">
+                <input
+                  type="text"
+                  name="firstname"
+                  class="register-input firstname"
+                  placeholder="firstname"
+                />
+                <input
+                  type="text"
+                  name="lastname"
+                  class="register-input lastname"
+                  placeholder="lastname"
+                />
+              </div>
+              <input
+                type="email"
+                name="email"
+                class="register-input email"
+                placeholder="email"
+              />
+              <div class="grid-2">
+                <input
+                  type="tel"
+                  name="contact"
+                  class="register-input contact"
+                  placeholder="contact"
+                />
+                <input
+                  type="date"
+                  name="date_of_birth"
+                  class="register-input dob"
+                  placeholder="Date Of Birth"
+                  id="dob"
+                />
+              </div>
+
+              <!-- personal info -->
+
+              <div class="separator">
+                <p class="heading">Personal Info</p>
+                <div class="divider"></div>
+              </div>
+
+              <input
+                type="text"
+                name="area_of_residence"
+                class="register-input area_of_res"
+                placeholder="Area of residence"
+              />
+              <div class="grid-2">
+                <select
+                  name="marital_status"
+                  id="marital_status"
+                  class="register-input marital_status"
+                >
+                  <option selected disabled>Marital Status</option>
+                  <option value="married">Married</option>
+                  <option value="single">Single</option>
+                </select>
+
+                <input
+                  type="tel"
+                  name="emergencyContact"
+                  class="register-input emergencyContact"
+                  placeholder="Emergency contact"
+                />
+              </div>
+              <!-- profession info -->
+              <div class="separator">
+                <p class="heading">Profession Info</p>
+                <div class="divider"></div>
+              </div>
+              <div class="grid-2">
+                <input
+                  type="text"
+                  name="occupation"
+                  class="register-input occupation"
+                  placeholder="occupation"
+                />
+              </div>
+
+              <button type="submit" class="register-btn">
+                Regsiter Patient
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="../js/index.js"></script>
+  </body>
+</html>

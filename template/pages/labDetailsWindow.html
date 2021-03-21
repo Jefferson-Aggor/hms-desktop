@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../all.css" />
+    <link rel="stylesheet" href="../financial.css" />
+    <style>
+      #search_form {
+        padding: 4rem 0;
+        border-bottom: 1px solid #eee;
+      }
+      #search {
+        border-radius: 10rem !important;
+      }
+      .test-type {
+        margin-left: 3rem;
+        font-size: 2.1rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        color: orangered;
+        text-transform: uppercase;
+      }
+
+      .test {
+        cursor: pointer;
+        transition: all 0.1s;
+      }
+
+      .btn {
+        border-radius: none !important;
+        margin-top: 2rem;
+        text-align: center;
+      }
+      #back {
+        background: #ececec;
+        padding: 1rem 1.4rem;
+        color: #777;
+      }
+    </style>
+    <title>Lab Details</title>
+  </head>
+  <body>
+    <div class="loader" id="loader">
+      <h1>Loading...</h1>
+    </div>
+    <section class="financial-details">
+      <div class="alert"></div>
+
+      <div class="financial-details-body" id="lab-details-body"></div>
+      <div id="lab-form">
+        <a href="" id="back"> <i class="fas fa-chevron-left"></i> Back</a>
+        <div id="lab-form-details"></div>
+        <a class="btn submit">Sumbit Lab Results</a>
+      </div>
+    </section>
+
+    <script src="../js/lab_details.js"></script>
+  </body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../all.css" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../consultation.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="loader" id="loader">
+      <h1>Loading...</h1>
+    </div>
+    <div class="consultation">
+      <div class="consultation-menu">
+        <div class="consultation-menu-item" id="consultation-handler">
+          <h3>Consultation</h3>
+        </div>
+        <div class="consultation-menu-item" id="lab-tests-handler">
+          <h3>Lab Test</h3>
+        </div>
+      </div>
+
+      <div class="consultation-body">
+       
+        <div class="consultation-details" id="consultation-details">
+          <div class="alert-success"></div>
+          <form action="">
+            <div class="icon-input">
+              <p>Patient Name</p>
+              <input
+                type="text"
+                placeholder=""
+                id="patient_name"
+                placeholder="Patient Name"
+                disabled
+                class="patient-name"
+              />
+            </div>
+            <div class="icon-input">
+              <p>Diagnosis</p>
+              <textarea
+                name=""
+                id="patient-disgnosis"
+                cols="20"
+                rows="10"
+                placeholder="Patient Diagnosis"
+              ></textarea>
+            </div>
+            <div class="icon-input">
+              <p>Assign to lab?</p>
+              <input type="checkbox" name="" id="checkbox" class="checkbox" />
+            </div>
+            <div style="margin-bottom: 3rem;">
+              <h3 class="title" >Lab Results</h3>
+              <div class="lab-results" id="lab-results"></div>
+            </div>
+            <div id="prescription">
+              <div class="icon-input"  id="prescriptions" >
+                <p>Prescription</p>
+                <input
+                  type="text"
+                  id="prescription-handler"
+                  class="patient-name"
+                  placeholder="Prescriptions"
+                />
+              </div>
+              
+              <input type="submit" value="Diagnose" class="btn" id="diagnose-handler" />
+            </div>
+            
+
+            <div class="alert-warning" id="alert-warning">
+              <p>Waiting for lab results...</p>
+              <!-- <div class="loader-cirle">Lorem ipsum dolor sit amet.</div> -->
+            </div>
+            
+          </form>
+        </div>
+
+        <div class="lab-details" id="lab-details">
+          <div class="card">
+            <div class="patient-details">
+              <div class="patient-details-item">
+                <i class="fas fa-user"></i>
+                <p class="patient-item-name"></p>
+              </div>
+              <div class="">
+                <p class="title">Symptoms <span class='show_number' id='num_symptoms'></span></p>
+                <div class="symptoms-output" id="symptoms-output"></div>
+              </div>
+            </div>
+          </div>
+          <div class="icon-input">
+
+           <form action="" class="lab-tests-form">
+            <div class="icon-input">
+              <p>Tests To Handle</p>
+              <input
+                type="text"
+                placeholder="Tests To Handle"
+                id="lab_tests_to_handle" 
+                class="patient-name"
+
+              />
+            </div>
+            
+
+              <p class="title">Tests to handle <span class="show_number" id="num_tests"></span>  </p>
+              
+          
+            <div class="lab-tests">
+            
+            </div>
+            <input type="submit" value="Run Lab Tests" class="btn btn-block" id="run_lab"/>
+           </form>
+          </div>
+        </div>
+    </div>
+
+    <script src="../js/consultation_details.js"></script>
+  </body>
+</html>

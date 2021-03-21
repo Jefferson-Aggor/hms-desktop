@@ -1,0 +1,75 @@
+:root {
+  --color_primary: #0081a7;
+  --color_secondary: #00afb9;
+  --color-success: #9fffcb;
+  --color-danger: #ff5a5f;
+}
+
+.financial-details {
+  padding: 5rem 3.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.financial-details-menu {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+}
+
+.financial-details-menu .icon-progress {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.icon-progress .fas {
+  font-size: 1.3rem;
+  color: #888;
+}
+.icon-progress .progress-bar {
+  width: 100%;
+  height: 0.2rem;
+  margin: 0 0.5rem;
+  border-radius: 2rem;
+  background-color: #ececec;
+}
+.financial-details-body {
+  margin-top: 2rem;
+}
+.financial-details-body .card {
+  padding: 2rem 2rem;
+}
+.financial-details-body .card .divider-sm {
+  display: inline-block;
+  margin: 0 0 4rem 0 !important;
+  height: 0.4rem;
+  border-radius: 10rem;
+  background: var(--color_primary);
+}
+.financial-details-body .payment-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 3rem;
+  background: #f1f1f1;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: var(--color_secondary);
+}
+.financial-details-body .payment-item p {
+  font-weight: 700;
+  color: var(--color_primary);
+  letter-spacing: 0.3rem;
+  word-spacing: 0.3rem;
+  text-transform: capitalize;
+}
+
+.financial-details-body .btn {
+  display: block;
+  margin-top: 3rem;
+  text-align: center;
+  /* padding: rem 1.2rem; */
+
+  font-size: 2rem;
+}

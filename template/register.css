@@ -1,0 +1,63 @@
+:root {
+  --color_primary: #0081a7;
+  --color_secondary: #00afb9;
+  --color-success: #9fffcb;
+  --color-danger: #ff5a5f;
+}
+
+.heading {
+  font-size: 1.3rem;
+  letter-spacing: 0.1rem;
+  font-weight: 400;
+}
+.separator {
+  padding: 1.5rem 0;
+}
+
+.register {
+  overflow-y: scroll;
+  height: 85vh;
+}
+.register-input {
+  display: block;
+  padding: 1.2rem 1.4rem;
+  border: 1px solid #888;
+  border-radius: 0.5rem;
+  outline: none;
+  font-size: 2rem;
+  text-transform: capitalize;
+  color: #888;
+  letter-spacing: 0.2rem;
+  margin-bottom: 3rem;
+  width: 100%;
+}
+
+.divider {
+  height: 0.2rem;
+  width: 100%;
+  background-color: var(--color_primary);
+  margin: 0.5rem 0;
+}
+
+.register-btn {
+  border: none;
+  padding: 1.2rem 2rem;
+  background: linear-gradient(
+    to left,
+    var(--color_primary),
+    var(--color_secondary)
+  );
+  color: #fff;
+  font-size: 1.5rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  transition: all 0.3s;
+}
+.register-btn:hover {
+  transform: translateY(-0.5rem);
+  box-shadow: 0rem 0.3rem 1rem rgba(0, 0, 0, 0.5);
+}
+.register-btn:active {
+  transform: translateY(0rem);
+  box-shadow: 0rem 0.3rem 1rem rgba(0, 0, 0, 0.7);
+}

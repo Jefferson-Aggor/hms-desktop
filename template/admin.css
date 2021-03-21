@@ -1,0 +1,241 @@
+:root {
+    --color_primary: #0081a7;
+    --color_secondary: #00afb9;
+    --color-success: #9fffcb;
+    --color-danger: #ff5a5f;
+  }
+.body{
+    background-color: #f9f9f9;
+}
+.overview .fas{
+    font-size: 7rem;
+    color: var(--color_secondary);
+    margin-bottom: 1rem;
+}
+.overview{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+    padding: 3rem 4rem;
+    margin-bottom: 2rem;
+    transition: all 0.3s;
+}
+
+.overview:hover{
+    box-shadow: 0 0.4rem 0.7rem rgba(0, 0, 0, 0.4);
+    transform: translateY(-5px);
+}
+.title{
+    font-size: 2rem !important;
+    letter-spacing: 0.7rem;
+    font-weight: 600;
+
+}
+.num{
+    font-size: 3rem;
+    color: var(--color_secondary);
+    letter-spacing: 0.4rem;
+    
+}
+
+.register-form-input{
+    border: 1px solid #888;
+    padding: 1.2rem 2rem;
+    font-size: 2.3rem;
+    color: #777;
+    text-transform: capitalize;
+    letter-spacing: 0.5rem;
+    width: 100%;
+    outline: none;
+    border-radius: 0.5rem;
+    margin-bottom: 2rem;
+
+}
+
+.btn{
+    width: 100%;
+    margin-top: 3rem;
+
+    transition: all 0.3s;
+}
+
+.btn:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 0.3rem 0.5rem  rgba(0, 0, 0, 0.4);
+}
+.btn:active{
+    transform: translateY(0px);
+    box-shadow: 0 0.4rem 0.6rem  rgba(0, 0, 0, 0.7);
+}
+
+#register-worker{
+    overflow-y: scroll;
+    height: 76vh;
+}
+
+.worker-details{
+    display: flex;
+    padding:1rem 1.2rem;
+    background-color: #fff;
+    align-items: center;
+    box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.4);
+    margin-top: 2rem;
+
+}
+.worker-image{
+    width: 9rem;
+    height: 9rem;
+    border-radius: 50%;
+    background-color: #00afb9;
+    margin-right: 2rem;
+}
+
+.worker-info{
+    display: flex;
+    flex-direction: column;
+}
+.info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color:#777;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid #f3f3f3;
+}
+.info-heading{
+    font-size: 1.5rem;
+    color:var(--color_secondary)
+}
+
+#output{
+    height: 70vh;
+    overflow-y: scroll;
+}
+#patient-output{
+    height: 75vh;
+    overflow-y: scroll;
+}
+
+
+.profile{
+    padding:5rem 3rem;
+    
+}
+.profile-body{
+    display: flex;
+
+}
+.profile-body-image{
+    flex: 3;
+    padding: 1rem 1.5rem;
+   
+}
+.profile-body-image img{
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+}
+
+
+.profile-body-content{
+    flex: 9;
+}
+
+.profile-header{
+    display: flex;
+    width: calc(100% - 4rem);
+    justify-content: space-between;
+    margin-bottom: 6rem;
+   
+}
+
+.profile-header h3{
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--color_primary);
+    letter-spacing: 0.3rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+
+}
+.profile-header p {
+    font-size: 1.6rem;
+    color:#ccc;
+    font-weight: 400;
+}
+
+.profile-role{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+.role{
+    color: var(--color_secondary) !important;
+    font-weight: 500 !important;
+}
+
+
+.profile-header .fas{
+    margin-right: 1rem;
+}
+.profile-btns{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 6rem;
+}
+.profile-btn{
+    padding:1rem 2rem;
+    background-color: #444;
+    color:#fff;
+    border-radius: 0.5rem;
+}
+.profile-btn:nth-child(1){
+    background-color: rgb(255, 136, 0) !important;
+}
+.profile-btn:nth-child(2){
+    background-color: var(--color-danger) !important;
+}
+
+.profile-title{
+    font-size: 2rem;
+    color:#ccc;
+    font-weight: 300;
+    letter-spacing: 0.4rem;
+    padding: 0.5rem 0;
+    text-transform: uppercase;
+
+}
+.profile-divider-sm{
+    width: 5rem;
+    height: 0.3rem;
+    background-color: var(--color_secondary);
+    border-radius: 10rem;
+}
+
+.profile-about-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.54rem;
+    margin-bottom: 1.5rem;
+    background-color: rgb(248, 248, 248);
+    border-radius: 0.5rem;
+}
+.profile-about-item-name{
+    color:var(--color_primary);
+    font-size: 1.5rem;
+    letter-spacing: 0.3rem;
+    text-transform: capitalize;
+}
+.profile-about-item-value{
+    color:var(--color_secondary);
+    font-size: 1.3rem;
+    letter-spacing: 0.2rem;
+    font-weight: 500;
+    
+}
+

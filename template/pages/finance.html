@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../all.css" />
+    <title>Financial Page</title>
+  </head>
+  <body>
+    <div class="loader" id="loader">
+      <h1>Loading...</h1>
+    </div>
+
+    <section class="flex-layout">
+      <div class="flex-layout-menu menu">
+        <a href="" class="menu-item" id="search-icon"
+          ><i class="fas fa-search"></i
+        ></a>
+
+        <a href="" class="menu-item"><i class="fas fa-globe"></i></a>
+      </div>
+      <div class="flex-layout-content">
+        <div class="navbar">
+          <div class="navbar-logo"><h2>HMS</h2></div>
+          <div class="navbar-links">
+            Welcome
+            <span
+              class="light-text"
+              id="username"
+              style="text-transform: capitalize"
+            ></span>
+          </div>
+        </div>
+        <div class="main-body">
+          <div class="alerts" id="alerts">
+            <p class="alert_text">Error</p>
+          </div>
+          <form action="" class="form" id="search_form">
+            <div class="form-body">
+              <input
+                type="text"
+                class="form-input block"
+                id="search"
+                name="person"
+                placeholder="Search Patient (First & Last name)"
+              />
+              <button type="submit" class="btn">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+          </form>
+          <div class="grid-3 search-output" id="search_output"></div>
+        </div>
+      </div>
+    </section>
+
+    <script src="../js/finance.js"></script>
+  </body>
+</html>

@@ -1,0 +1,112 @@
+:root {
+  --color_primary: #0081a7;
+  --color_secondary: #00afb9;
+  --color-success: #9fffcb;
+  --color-danger: #ff5a5f;
+}
+.consultation-menu {
+  display: flex;
+  width: 100%;
+}
+.consultation-menu .consultation-menu-item {
+  flex-direction: row;
+  padding: 1.2rem 1.4rem;
+  background-color: #f4f4f4;
+  flex: 1;
+  text-align: center;
+  font-size: 1.3rem;
+  color: #777;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.consultation-menu .consultation-menu-item:first-child {
+  margin-right: 0.1rem;
+}
+.consultation-menu .consultation-menu-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0.3rem 0.2rem rgba(0, 0, 0, 0.2);
+}
+.consultation-menu .consultation-menu-item:active {
+  transform: translateY(0px);
+  box-shadow: 0 0.2rem 0.1rem rgba(0, 0, 0, 0.1);
+}
+
+.consultation-details {
+  padding: 5rem 3em;
+}
+
+.icon-input {
+  /* display: flex; */
+  color: #888;
+  margin-bottom: 4rem;
+}
+.icon-input p {
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  color: var(--color_primary);
+}
+.patient-name,
+textarea {
+  width: 100%;
+  border: 2px solid #888;
+  border-radius: 0.5rem;
+  padding: 1rem 1.5rem;
+  font-size: 2rem;
+  color: #888;
+  outline: none;
+}
+.consultation-details .patient-name {
+  text-transform: capitalize;
+}
+.consultation-details input::placeholder,
+.consultation-details textarea::placeholder {
+  color: #888;
+  font-family: inherit;
+}
+.consultation-details .btn {
+  width: 100%;
+  text-align: center;
+}
+
+.lab-details {
+  padding: 2rem 1.5rem;
+}
+.card .patient-details {
+  padding: 3rem 2rem;
+  color: #777;
+}
+
+.patient-details-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 1rem;
+  background: #f3f3f3;
+  border-radius: 0.5rem;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.patient-item-name {
+  color: var(--color_secondary);
+  letter-spacing: 0.4rem;
+  text-transform: capitalize;
+}
+
+.patient-details-menu {
+  margin-left: 3rem;
+}
+.patient-details-menu-item {
+  font-size: 1.3rem;
+}
+.lab-tests-form {
+  margin-top: 5rem;
+}
+.lab-tests {
+  margin-bottom: 4rem;
+}
+#lab_tests_to_handle {
+  font-size: 2rem;
+  word-spacing: 0.5rem;
+}
