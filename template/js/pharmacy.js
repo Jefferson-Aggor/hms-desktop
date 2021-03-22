@@ -8,10 +8,18 @@ const search = document.getElementById("search");
 const search_output = document.getElementById("search_output");
 const loader = document.getElementById("loader");
 
-const { search_error } = require("../../helpers/helpers");
+const {
+  search_error,
+  getInitials,
+  splitDate,
+} = require("../../helpers/helpers");
 
 ipcRenderer.on("loggedUserDetails", function (e, decoded) {
   username.innerText = `${decoded.firstname} ${decoded.lastname}`;
+});
+
+ipcRenderer.on("patient:loaded", function (e, data) {
+  if (data) loader.style.display = "none";
 });
 
 search_form.addEventListener("submit", searchUser);
@@ -56,7 +64,7 @@ async function searchUser(e) {
                   ${
                     patient.paid && patient.paidForDrugs
                       ? `<a href="" class="btn" id='view_pharmacy_details' data-id=${patient._id} >View Patient</a> `
-                      : `<a href="" class="btn" id='view_pharmacy_details' data-id=${patient._id} disabled>Not Paid</a>`
+                      : `<a href="" class="btn-disabled" id='view_pharmacy_details' data-id=${patient._id} >Not Paid</a>`
                   }
                   
                 </div>
@@ -65,12 +73,19 @@ async function searchUser(e) {
       return temp;
     });
 
+    const btn_disabled = document.querySelectorAll(".btn-disabled");
+    btn_disabled.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+      });
+    });
+
     const btns = document.querySelectorAll(".btn");
     btns.forEach((btn) => {
       btn.addEventListener("click", (e) => {
         e.preventDefault();
         loader.style.display = "block";
-        ipcRenderer.send("consultation:patient", e.target.dataset.id);
+        ipcRenderer.send("pharmacy:patient", e.target.dataset.id);
       });
     });
   } catch (err) {

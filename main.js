@@ -19,6 +19,7 @@ let adminWindow;
 let workerWindowDetails;
 let patientWindowDetails;
 let pharmacyWindow;
+let pharmacyDetailsWindow;
 
 const webPreferences = {
   webPreferences: {
@@ -318,7 +319,38 @@ app.on("ready", () => {
         );
 
         pharmacyWindow.webContents.on("did-finish-load", async () => {
-          ipcMain.webContents.send("loaggedUserDetails", decoded);
+          pharmacyWindow.webContents.send("loaggedUserDetails", decoded);
+        });
+
+        ipcMain.on("pharmacy:patient", async (e, data) => {
+          try {
+            const patient = await axios.get(
+              `https://hms-project.herokuapp.com/api/members/?_id=${data}`
+            );
+
+            if (patient) {
+              pharmacyDetailsWindow = new BrowserWindow({
+                ...webPreferences,
+                height: 700,
+                width: 700,
+              });
+              pharmacyWindow.webContents.send("patient:loaded", true);
+              pharmacyDetailsWindow.loadURL(
+                `file://${__dirname}/template/pages/pharmacyDetailsWindow.html`
+              );
+
+              pharmacyDetailsWindow.webContents.on("did-finish-load", () => {
+                pharmacyDetailsWindow.webContents.send(
+                  "pharmacy:patient-details",
+                  patient.data.data
+                );
+              });
+            } else {
+              console.log("patient not found");
+            }
+          } catch (err) {
+            console.log(err);
+          }
         });
 
         break;
