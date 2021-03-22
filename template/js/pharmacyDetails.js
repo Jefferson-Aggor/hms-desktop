@@ -7,6 +7,7 @@ const { splitTexts, search_error } = require("../../helpers/helpers");
 const loader = document.getElementById("loader");
 const submitBtn = document.querySelector(".submit-drug-btn");
 const pharmacy_output = document.querySelector(".pharmacy-output");
+const pharmacy = document.getElementById("pharmacy");
 
 ipcRenderer.on("pharmacy:patient-details", (e, data) => {
   if (Object.keys(data[0].consultation.diagnosis).includes("prescriptions")) {
@@ -33,11 +34,19 @@ ipcRenderer.on("pharmacy:patient-details", (e, data) => {
     loader.style.display = "block";
     try {
       const patient = await axios.put(
-        `hms-project.herokuapp.com/api/user/${data[0]._id}/pharmacy`,
+        `https://hms-project.herokuapp.com/api/user/${data[0]._id}/pharmacy`,
         {}
       );
-      loader.style.display = "none";
-      console.log(patient);
+      if (patient.data === `Thank you for using our services. Stay safe`) {
+        loader.style.display = "none";
+        pharmacy.innerHTML = `
+        <section class="success">
+      <i class="fas fa-check"></i>
+      <h1 class="title">${patient.data}</h1>
+      <p>Close Window</p>
+    </section>
+        `;
+      }
     } catch (err) {
       submitBtn.style.display = "none";
       loader.style.display = "none";
