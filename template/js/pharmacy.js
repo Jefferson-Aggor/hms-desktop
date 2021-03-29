@@ -50,25 +50,31 @@ async function searchUser(e) {
     loader.style.display = "none";
 
     search_output.innerHTML = patients.data.data.map((patient) => {
-      const temp = `
-        <div class="card" >
-                  <div class=" search_output_img">
-                    <p> ${getInitials(patient.firstname, patient.lastname)}</p>
-                  </div>
-                  <div class="search_output_info">
-                    <p class="heading_text">
-                    ${patient.firstname} ${patient.lastname}</p>
-                    <div class="divider-sm"></div>
-                    <p>${splitDate(patient.joinedAt, "-")}</p>
-                  </div>
-                  ${
-                    patient.paid && patient.paidForDrugs
-                      ? `<a href="" class="btn" id='view_pharmacy_details' data-id=${patient._id} >View Patient</a> `
-                      : `<a href="" class="btn-disabled" id='view_pharmacy_details' data-id=${patient._id} >Not Paid</a>`
-                  }
-                  
-                </div>
-        `;
+      const temp = ` 
+      <div class="card" >
+              <div class="search_output_img">
+                <p class='image'> ${getInitials(
+                  patient.firstname,
+                  patient.lastname
+                )}</p>
+                <div class="search_output_info">
+                <p class="heading_text">
+                ${patient.firstname} ${patient.lastname}</p>
+               
+                <p class='search_output_date'>Joined Since : ${splitDate(
+                  patient.joinedAt,
+                  "/"
+                )}</p>
+              </div>
+              </div>
+              
+              ${
+                patient.paid
+                  ? `<i class='fas fa-chevron-right fa-5x assign_btn' id='assign_btn' data-id=${patient._id}></i>`
+                  : `<i class='fas fa-ban fa-5x assign_btn' style='color:#c51d1d'></i>`
+              }
+        </div>
+      `;
 
       return temp;
     });
@@ -80,7 +86,7 @@ async function searchUser(e) {
       });
     });
 
-    const btns = document.querySelectorAll(".btn");
+    const btns = document.querySelectorAll("#assign_btn");
     btns.forEach((btn) => {
       btn.addEventListener("click", (e) => {
         e.preventDefault();

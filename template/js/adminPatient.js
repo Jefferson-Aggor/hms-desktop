@@ -9,7 +9,7 @@ ipcRenderer.on("admin:patient-details", async (e, data) => {
   profile.innerHTML = `
  <div class="profile-body">
         <div class="profile-body-image">
-          <img src="../assets/imgs/img_avtar.jpg" alt="profile-img" />
+          <i class='fas fa-user fa-5x'></i>
         </div>
         <div class="profile-body-content">
           <div class="profile-header">
@@ -30,7 +30,7 @@ ipcRenderer.on("admin:patient-details", async (e, data) => {
                 <i class="fas fa-check"></i>
             </p>`
                 : `<p style="color:red;">
-                <i class="fas fa-cross"></i>
+                <i class="fas fa-dot"></i>
             </p>`
             }
           </div>

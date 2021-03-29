@@ -8,6 +8,7 @@ const {
   showCurrent,
   search_error,
   splitDate,
+  getInitials,
 } = require("../../helpers/helpers");
 
 const username = document.getElementById("username");
@@ -94,6 +95,10 @@ show_and_hide(
   worker_details
 );
 
+ipcRenderer.on("client:loaded", function (e, data) {
+  if (data) loader.style.display = "none";
+});
+
 // search for workers and patients;
 const searchPatients = async () => {
   try {
@@ -145,9 +150,13 @@ workers_icon.addEventListener("click", (e) => {
 
       output.innerHTML = workers.map((worker) => {
         return `<div class="worker-details">
-                <div class="worker-image"></div>
+                <div class="worker-image">
+                <p>${getInitials(worker.firstname, worker.lastname)}</p>
+                </div>
                 <div class="worker-info">
-                  <h1 class="title" style='text-transform:capitalize'>${worker.firstname} ${worker.lastname}</h1>
+                  <h1 class="title" style='text-transform:capitalize'>${
+                    worker.firstname
+                  } ${worker.lastname}</h1>
                   <div class="info">
                     <p class="info-heading">Role</p>
                     <p class="info-sub-text">${worker.role}</p>
@@ -156,7 +165,9 @@ workers_icon.addEventListener("click", (e) => {
                     <p class="info-heading">Contact</p>
                     <p class="info-sub-text">${worker.contact}</p>
                   </div>
-                  <a href="" class="btn" style="text-align: center;" data-id = ${worker._id}>View More</a>
+                  <a href="" class="btn" style="text-align: center;" data-id = ${
+                    worker._id
+                  }>View More</a>
                 </div>
               </div>`;
       });
@@ -195,7 +206,9 @@ filter.addEventListener("change", async (e) => {
     } else {
       output.innerHTML = workers.data.data.map((worker) => {
         return `<div class="worker-details">
-          <div class="worker-image"></div>
+          <div class="worker-image">
+          <p>${getInitials(worker.firstname, worker.lastname)}</p>
+          </div>
           <div class="worker-info">
             <h1 class="title">${worker.firstname} ${worker.lastname}</h1>
             <div class="info">
@@ -206,7 +219,9 @@ filter.addEventListener("change", async (e) => {
               <p class="info-heading">Contact</p>
               <p class="info-sub-text">${worker.contact}</p>
             </div>
-            <a href="" class="btn" style="text-align: center;" data-id=${worker._id}>View More</a>
+            <a href="" class="btn" style="text-align: center;" data-id=${
+              worker._id
+            }>View More</a>
           </div>
         </div>`;
       });
@@ -241,7 +256,9 @@ patients_icon.addEventListener("click", (e) => {
       patient_output.innerHTML = data.patients.data.map((patient) => {
         return `
         <div class="worker-details">
-          <div class="worker-image"></div>
+          <div class="worker-image">
+          <p>${getInitials(patient.firstname, patient.lastname)}</p>
+          </div>
           <div class="worker-info">
             <h1 class="title">${patient.firstname} ${patient.lastname}</h1>
             <div class="info">
@@ -272,10 +289,7 @@ patients_icon.addEventListener("click", (e) => {
 });
 
 //Registration form;
-
-register_form.addEventListener("submit", register_worker);
-
-async function register_worker(e) {
+register_form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const alert_text = document.querySelector(".alert-text");
@@ -321,8 +335,17 @@ async function register_worker(e) {
       console.log(workerData);
       const worker = await axios.post(
         `https://hms-project.herokuapp.com/api/workers/register/`,
-        workerData
+        { ...workerData }
       );
+
+      // const worker = await fetch(
+      //   `https://hms-project.herokuapp.com/api/workers/register/`,
+      //   {
+      //     method: "POST",
+      //     body: JSON.stringify(workerData),
+      //     headers: { "Content-type": "application/json" },
+      //   }
+      // );
 
       alert.innerHTML = `<div class='alert-success'>Successfully Registered A Worker</div>`;
 
@@ -334,13 +357,13 @@ async function register_worker(e) {
     } catch (err) {
       console.log(err);
       loader.style.display = "none";
-      alert.innerHTML = `<div class='alert-danger'>Failed Register A Worker. \n ${err}</div>`;
+      alert.innerHTML = `<div class='alert-danger'>Failed Register Worker. <br> ${err}</div>`;
       setTimeout(() => {
         alert.innerHTML = "";
       }, 5000);
     }
   }
-}
+});
 
 // Logout;
 logout_icon.addEventListener("click", (e) => {

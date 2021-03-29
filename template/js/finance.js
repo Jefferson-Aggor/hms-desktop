@@ -66,11 +66,16 @@ async function searchUser(e) {
     });
   } catch (err) {
     loader.style.display = "none";
-    alerts.firstElementChild.innerText = err;
-    alerts.style.display = "block";
-
-    setTimeout(() => {
-      alerts.style.display = "none";
-    }, 5000);
+    search_output.innerHTML = `
+        <div class='error-action'>
+            <div >${search_error(
+              "User not found",
+              "fas fa-user-alt-slash",
+              "#c51d1d"
+            )}
+            </div>
+           
+        </div>
+      `;
   }
 }

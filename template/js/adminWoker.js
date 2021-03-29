@@ -7,7 +7,7 @@ ipcRenderer.on("admin:worker-details", (e, data) => {
   profile.innerHTML = `
  <div class="profile-body">
         <div class="profile-body-image">
-          <img src="../assets/imgs/img_avtar.jpg" alt="profile-img" />
+        <i class='fas fa-user fa-5x'></i>
         </div>
         <div class="profile-body-content">
           <div class="profile-header">

@@ -297,39 +297,48 @@ a {
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 1.3rem;
 }
-.grid-3 {
+/* .grid-3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 1.3rem;
-}
+} */
 .search-output {
   margin-top: 4rem;
+ 
+}
+.search-output .card{
+  display: flex;
+  justify-content: space-between;
 }
 .search-output .search_output_img {
   display: flex;
-  justify-content: center;
+  
   align-items: center;
+  flex: 1;
+}
+.search-output .search_output_date{
+  font-size: 1.3rem ;
+  letter-spacing: 0.2rem;
+  color: #777;
 }
 
-.search-output .search_output_img p {
-  background: linear-gradient(
-    to left bottom,
-    var(--color_secondary),
-    var(--color_primary)
-  );
+.search-output .search_output_img .image {
+ background-color: var(--color_primary);
   padding: 1.2rem 1.5rem;
   text-transform: capitalize !important;
   text-align: center;
   font-size: 2.2rem;
-  font-weight: 200;
+  font-weight: 500;
   color: #fff;
-  opacity: 0.8;
+  
   border-radius: 50%;
-  letter-spacing: 0.1rem;
+
+  margin-right: 2rem;
 }
+
 .search-output .search_output_info {
   margin: 1.4rem 0;
-  text-align: center;
+ 
 }
 .search-output .search_output_info .heading_text {
   font-size: 1.5rem;
@@ -410,7 +419,12 @@ a {
 }
 
 /* assign doctor */
+.assign_btn{
+  color: var(--color_secondary);
+  opacity: 0.8;
+  cursor: pointer;
 
+}
 .doctors {
   padding: 5rem 3rem;
 }
@@ -458,4 +472,19 @@ a {
   justify-content: space-between;
   padding: 1rem 1.3rem;
   border-bottom: 0.3rem solid #ececec;
+}
+
+.error-action{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.error-action a{
+  cursor: pointer;
+transition: all 0.2s;
+margin-top: -5rem;
+}
+.error-action a:hover{
+  box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
 }

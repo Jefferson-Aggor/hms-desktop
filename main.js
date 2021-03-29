@@ -102,42 +102,45 @@ app.on("ready", () => {
           financeWindow.webContents.send("loggedUserDetails", decoded);
 
           ipcMain.on("financial:view_details", async (e, data) => {
-            const patient = await axios.get(
-              `https://hms-project.herokuapp.com/api/members/?_id=${data}`
-            );
+            try {
+              console.log(data);
+              const patient = await axios.get(
+                `https://hms-project.herokuapp.com/api/members/?_id=${data}`
+              );
 
-            if (!patient) console.log("error");
+              if (!patient) console.log("error");
+              financeWindow.webContents.send("loadedPatient", true);
 
-            financeWindow.webContents.send("loadedPatient", true);
-
-            financialDetailsWindow = new BrowserWindow({
-              ...webPreferences,
-              width: 700,
-              height: 700,
-              resizable: false,
-              alwaysOnTop: true,
-            });
-            financialDetailsWindow.loadURL(
-              `file://${__dirname}/template/pages/financial_details.html`
-            );
-
-            financialDetailsWindow.webContents.on(
-              "did-finish-load",
-              async () => {
-                try {
-                  financialDetailsWindow.webContents.send(
-                    "financial:details",
-                    patient.data.data
-                  );
-                } catch (err) {
-                  console.log(err);
+              financialDetailsWindow = new BrowserWindow({
+                ...webPreferences,
+                width: 700,
+                height: 700,
+                resizable: false,
+                alwaysOnTop: true,
+              });
+              financialDetailsWindow.loadURL(
+                `file://${__dirname}/template/pages/financial_details.html`
+              );
+              financialDetailsWindow.webContents.on(
+                "did-finish-load",
+                async () => {
+                  try {
+                    financialDetailsWindow.webContents.send(
+                      "financial:details",
+                      patient.data.data
+                    );
+                  } catch (err) {
+                    console.log(err);
+                  }
                 }
-              }
-            );
+              );
 
-            financialDetailsWindow.on("close", async () => {
-              financialDetailsWindow = null;
-            });
+              financialDetailsWindow.on("close", async () => {
+                financialDetailsWindow = null;
+              });
+            } catch (err) {
+              console.log(err.message);
+            }
           });
         });
         break;

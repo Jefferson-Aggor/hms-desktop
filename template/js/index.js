@@ -6,6 +6,8 @@ const {
   show_and_hide,
   splitDate,
   getInitials,
+  showCurrent,
+  search_error,
 } = require("../../helpers/helpers");
 
 const username = document.getElementById("username");
@@ -25,7 +27,7 @@ register_patient.style.display = "none";
 show_and_hide(register_icon, register_patient, search_patient);
 show_and_hide(search_icon, search_patient, register_patient);
 
-const rootUrl = "https://hms-project.herokuapp.com/api/";
+showCurrent("#fff", search_icon, register_icon);
 
 ipcRenderer.on("loggedUserDetails", function (e, decoded) {
   username.innerText = `${decoded.firstname} ${decoded.lastname}`;
@@ -59,51 +61,68 @@ async function searchUser(e) {
     const patient = await axios.get(url);
 
     loader.style.display = "none";
-    const temp = patient.data.data.map((patient) => {
-      const temp = ` 
-      <div class="card" >
-              <div class="search_output_img">
-                <p> ${getInitials(patient.firstname, patient.lastname)}</p>
-              </div>
-              <div class="search_output_info">
-                <p class="heading_text">
-                ${patient.firstname} ${patient.lastname}</p>
-                <div class="divider-sm"></div>
-                <p>${splitDate(patient.joinedAt, "-")}</p>
-              </div>
-              ${
-                patient.paid
-                  ? `<a href="" class="btn" id='assign_doctor_btn' data-id=${patient._id} >Assign Doctor</a>`
-                  : "Go to finance dept"
-              }
-        </div>
-      `;
+    console.log(patient);
+    if (patient.data.count !== 0) {
+      const temp = patient.data.data.map((patient) => {
+        const temp = ` 
+        <div class="card" >
+                <div class="search_output_img">
+                  <p class='image'> ${getInitials(
+                    patient.firstname,
+                    patient.lastname
+                  )}</p>
+                  <div class="search_output_info">
+                  <p class="heading_text">
+                  ${patient.firstname} ${patient.lastname}</p>
+                 
+                  <p class='search_output_date'>Joined Since : ${splitDate(
+                    patient.joinedAt,
+                    "/"
+                  )}</p>
+                </div>
+                </div>
+                
+                ${
+                  patient.paid
+                    ? `<i class='fas fa-chevron-right fa-5x assign_btn' id='assign_doctor_btn' data-id=${patient._id}></i>`
+                    : `<i class='fas fa-ban fa-5x assign_btn' style='color:#c51d1d'></i>`
+                }
+          </div>
+        `;
 
-      return temp;
-    });
+        return temp;
+      });
 
-    search_output.innerHTML = temp;
+      search_output.innerHTML = temp;
 
-    const btns = document.querySelectorAll("#assign_doctor_btn");
-    btns.forEach((btn) => {
-      btn.addEventListener("click", function (e) {
-        loader.style.display = "block";
-        e.preventDefault();
-        ipcRenderer.send("patient", e.target.dataset.id);
+      const btns = document.querySelectorAll("#assign_doctor_btn");
+      btns.forEach((btn) => {
+        btn.addEventListener("click", function (e) {
+          loader.style.display = "block";
+          e.preventDefault();
+          ipcRenderer.send("patient", e.target.dataset.id);
 
-        ipcRenderer.on("patient:loaded", (e, data) => {
-          if (data) loader.style.display = "none";
+          ipcRenderer.on("patient:loaded", (e, data) => {
+            if (data) loader.style.display = "none";
+          });
         });
       });
-    });
+    } else {
+      search_output.innerHTML = `
+        <div class='error-action'>
+            <div >${search_error(
+              "User not found",
+              "fas fa-user-alt-slash",
+              "#c51d1d"
+            )}
+            </div>
+           
+        </div>
+      `;
+    }
   } catch (err) {
     loader.style.display = "none";
-    alerts.style.display = "block";
-    alerts.innerHTML = `<p>${err}</p>`;
-
-    setTimeout(() => {
-      alerts.style.display = "none";
-    }, 5000);
+    search_output.innerHTML = search_error(err);
   }
 }
 

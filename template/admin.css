@@ -7,6 +7,13 @@
 .body{
     background-color: #f9f9f9;
 }
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1.3rem;
+  }
+  
 .overview .fas{
     font-size: 7rem;
     color: var(--color_secondary);
@@ -79,21 +86,38 @@
     padding:1rem 1.2rem;
     background-color: #fff;
     align-items: center;
+    justify-content: space-between;
     box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.4);
     margin-top: 2rem;
 
 }
 .worker-image{
-    width: 9rem;
+    max-width: 9rem;
     height: 9rem;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 50%;
     background-color: #00afb9;
     margin-right: 2rem;
+    flex: 1;
 }
-
+.worker-image p{
+    font-size: 1.5rem;
+    color:#fff;
+    font-weight: 500;
+    text-transform: uppercase;
+}
 .worker-info{
     display: flex;
     flex-direction: column;
+    flex: 1;
+    margin: 0 5rem;
+}
+
+.worker-info h1{
+    text-transform: capitalize;
 }
 .info{
     display: flex;
@@ -106,6 +130,12 @@
 .info-heading{
     font-size: 1.5rem;
     color:var(--color_secondary)
+}
+
+.info-sub-text{
+    text-transform: capitalize;
+    font-size: 1.7rem;
+    letter-spacing: 0.3rem;
 }
 
 #output{
@@ -127,14 +157,21 @@
 
 }
 .profile-body-image{
+   
     flex: 3;
     padding: 1rem 1.5rem;
+
    
 }
-.profile-body-image img{
+.profile-body-image i{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 10rem;
     height: 10rem;
     border-radius: 50%;
+    color:#777;
+    border: 1px solid #ececec;
 }
 
 
@@ -238,4 +275,6 @@
     font-weight: 500;
     
 }
+
+
 

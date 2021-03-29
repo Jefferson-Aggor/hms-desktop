@@ -51,29 +51,36 @@ async function searchUser(e) {
     loader.style.display = "none";
 
     search_output.innerHTML = patients.data.data.map((patient) => {
-      const temp = `
+      const temp = ` 
         <div class="card" >
-                  <div class=" search_output_img">
-                    <p> ${getInitials(patient.firstname, patient.lastname)}</p>
-                  </div>
+                <div class="search_output_img">
+                  <p class='image'> ${getInitials(
+                    patient.firstname,
+                    patient.lastname
+                  )}</p>
                   <div class="search_output_info">
-                    <p class="heading_text">
-                    ${patient.firstname} ${patient.lastname}</p>
-                    <div class="divider-sm"></div>
-                    <p>${splitDate(patient.joinedAt, "-")}</p>
-                  </div>
-                  ${
-                    patient.paid
-                      ? `<a href="" class="btn"  data-id=${patient._id} >View Patient</a> `
-                      : `<a href="" class="btn" data-id=${patient._id} disabled>Not Paid</a>`
-                  }
+                  <p class="heading_text">
+                  ${patient.firstname} ${patient.lastname}</p>
+                 
+                  <p class='search_output_date'>Joined Since : ${splitDate(
+                    patient.joinedAt,
+                    "/"
+                  )}</p>
                 </div>
+                </div>
+                
+                ${
+                  patient.paid & patient.lab_results.paidForLab
+                    ? `<i class='fas fa-chevron-right fa-5x assign_btn' id='btn' data-id=${patient._id}></i>`
+                    : `<i class='fas fa-ban fa-5x assign_btn' style='color:#c51d1d'></i>`
+                }
+          </div>
         `;
 
       return temp;
     });
 
-    const btns = document.querySelectorAll(".btn");
+    const btns = document.querySelectorAll("#btn");
     btns.forEach((btn) => {
       btn.addEventListener("click", (e) => {
         e.preventDefault();
@@ -83,7 +90,16 @@ async function searchUser(e) {
     });
   } catch (err) {
     loader.style.display = "none";
-    search_output.innerHTML = search_error(err);
-    console.log(err);
+    search_output.innerHTML = `
+        <div class='error-action'>
+            <div >${search_error(
+              "User not found",
+              "fas fa-user-alt-slash",
+              "#c51d1d"
+            )}
+            </div>
+           
+        </div>
+      `;
   }
 }
